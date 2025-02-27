@@ -1,0 +1,45 @@
+import numpy as np
+import matplotlib.pyplot as plt
+
+# تنظیم اندازه کلی نمودارها
+plt.figure(figsize=(10, 8))
+
+# نمودار (الف)
+n1 = np.arange(-10, 11, 1)
+x1 = np.exp(-0.3 * abs(n1)) * (n1 >= -5) * (n1 <= 5)  # سیگنال نمایی محدود
+
+plt.subplot(2, 2, 1)
+plt.stem(n1, x1, use_line_collection=True)
+plt.title("(الف)")
+plt.xlabel("n")
+
+# نمودار (ب)
+n2 = np.arange(-10, 11, 1)
+x2 = np.exp(-0.3 * abs(n2 - 5)) * (n2 >= 0) * (n2 <= 10)  # انتقال سیگنال
+
+plt.subplot(2, 2, 2)
+plt.stem(n2, x2, use_line_collection=True)
+plt.title("(ب)")
+plt.xlabel("n")
+
+# نمودار (ج)
+n3 = np.arange(-10, 11, 1)
+x3 = np.exp(-0.2 * n3) * (n3 >= 0) - np.exp(0.2 * n3) * (n3 < 0)  # ترکیب نمایی مثبت و منفی
+
+plt.subplot(2, 2, 3)
+plt.stem(n3, x3, use_line_collection=True)
+plt.title("(ج)")
+plt.xlabel("n")
+
+# نمودار (د)
+n4 = np.arange(-10, 11, 1)
+x4 = np.exp(-0.2 * (n4 - 5)) * (n4 >= 5) - np.exp(0.2 * (n4 - 5)) * (n4 < 5)  # جابجایی سیگنال
+
+plt.subplot(2, 2, 4)
+plt.stem(n4, x4, use_line_collection=True)
+plt.title("(د)")
+plt.xlabel("n")
+
+# نمایش نمودارها
+plt.tight_layout()
+plt.show()
